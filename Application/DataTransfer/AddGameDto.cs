@@ -7,12 +7,12 @@ namespace Application.DataTransfer
         [Required]
         public string Name { get; set; }
         [Required]
-        public int Size { get; set; }
-        [Required]
         public string Description { get; set; }
-        [Required]
+        [Required(ErrorMessage = "CategoryId is Required")]
+        [Range(1, int.MaxValue, ErrorMessage = "CategoryId must be a positive number")]
         public int CategoryId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "CompanyId is Required")]
+        [Range(1, int.MaxValue, ErrorMessage = "CompanyId must be a positive number")]
         public int CompanyId { get; set; }
     }
 }

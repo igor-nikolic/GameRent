@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Application.Commands;
 using Application.DataTransfer;
@@ -15,8 +16,8 @@ namespace EfCommands
         public void Execute(AddGameDto req)
         {
             if (Context.Games.Any(g => g.Name == req.Name)) throw new GameExistsException();
-            if (Context.Games.Any(g => g.CompanyId != req.CompanyId)) throw new CompanyDoesntExistException();
-            if (Context.Games.Any(g => g.CategoryId != req.CategoryId)) throw new CategoryDoesntExistException();
+            if (!Context.Companies.Any(c => c.Id == req.CompanyId)) throw new CompanyDoesntExistException();
+            if (!Context.Categories.Any(c => c.Id == req.CategoryId)) throw new CategoryDoesntExistException();
             Context.Games.Add(new Game
                 {
                     Name = req.Name,

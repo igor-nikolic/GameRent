@@ -47,7 +47,6 @@ namespace API.Controllers
             {
                 return StatusCode(500);
             }
-            
         }
 
         // PUT api/values/5
