@@ -21,7 +21,6 @@ namespace EfCommands
                 {
                     Name = req.Name,
                     Description =  req.Description,
-                    Size = req.Size,
                     CategoryId = req.CategoryId,
                     CompanyId = req.CompanyId
                 });

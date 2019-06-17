@@ -14,8 +14,6 @@ namespace DataAccess.Configurations
             builder.Property(g => g.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.Property(g => g.Size)
-                .IsRequired();
             builder.Property(g => g.Description)
                 .IsRequired()
                 .HasMaxLength(100);

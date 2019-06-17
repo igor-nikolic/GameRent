@@ -3,6 +3,7 @@ using Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace DataAccess
@@ -28,6 +29,56 @@ namespace DataAccess
             modelBuilder.ApplyConfiguration(new RentConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            
+            //Company seeding
+            modelBuilder.Entity<Company>().HasData(
+                new Company{Id = 1,Name = "Ubisoft"}, // 1
+                new Company{Id = 2,Name = "Electronic Arts"}, // 2
+                new Company{Id = 3,Name = "Nintendo"}, // 3
+                new Company{Id = 4,Name = "Sony"}, // 4
+                new Company{Id = 5,Name = "Rockstar Games"} // 5
+                );
+            // Categories seeding
+            modelBuilder.Entity<Category>().HasData(
+                new Category{Id = 1,Name = "Massively Multiplayer Online"}, // 1
+                new Category{Id = 2,Name = "Simulations"}, // 2
+                new Category{Id = 3,Name = "Adventure"}, // 3
+                new Category{Id = 4,Name = "Real-Time Strategy"}, // 4
+                new Category{Id = 5,Name = "Puzzle"}, // 5
+                new Category{Id = 6,Name = "Action"}, // 6
+                new Category{Id = 7,Name = "Stealth Shooter"}, // 7
+                new Category{Id = 8,Name = "Combat"}, // 8
+                new Category{Id = 9,Name = "First Person Shooters"}, // 9
+                new Category{Id = 10,Name = "Sports"}, // 10
+                new Category{Id = 11,Name = "Role-Playing"}, // 11
+                new Category{Id = 12,Name = "Educational"} // 12
+                
+                );
+            //Roles seeding
+            modelBuilder.Entity<Role>().HasData(
+                new Role{Id = 1,Name = "Admin"},
+                new Role{Id = 2,Name = "User"}
+            );
+            //Users seeding
+            modelBuilder.Entity<User>().HasData(
+                new User{Id = 1,FirstName = "Admin",LastName = "Admin",Email = "examleadmin@example.com",Password = "admin",RoleId = 1}, //change this
+                new User{Id = 2,FirstName = "User",LastName = "User",Email = "examleuser@example.com",Password = "user",RoleId = 2}
+            );
+            //Games seeding
+            modelBuilder.Entity<Game>().HasData(
+                new Game{Id = 1,Name = "Need for Speed",Description = "Racing game",CategoryId = 2,CompanyId = 2},
+                new Game{Id = 2,Name = "Mario Kart",Description = "Childhood game",CategoryId = 3,CompanyId = 4},
+                new Game{Id = 3,Name = "Assassin Creed",Description = "This is a description for assassins game",CategoryId = 8,CompanyId = 1},
+                new Game{Id = 4,Name = "Tom Clancy",Description = "This is a description for Tom Clancy",CategoryId = 9,CompanyId = 1},
+                new Game{Id = 5,Name = "Prince of Persia",Description = "This is a description for Prince of Persia",CategoryId = 7,CompanyId = 1},
+                new Game{Id = 6,Name = "Far Cry",Description = "This is a description for Far Cry",CategoryId = 1,CompanyId = 1},
+                new Game{Id = 7,Name = "FIFA 19",Description = "This is a description for FIFA 19",CategoryId = 10,CompanyId = 2},
+                new Game{Id = 8,Name = "The Sims 4",Description = "This is a description for The Sims 4",CategoryId = 4,CompanyId = 2},
+                new Game{Id = 9,Name = "Grand Theft Auto",Description = "This is a description for Grand Theft Auto",CategoryId = 12,CompanyId = 5},
+                new Game{Id = 10,Name = "Mario Bros",Description = "This is a description for Mario Bros",CategoryId = 8,CompanyId = 3}
+            );
+
+
         }
 
 
