@@ -43,7 +43,6 @@ namespace EfCommands
                 GameId = req.GameId
             });
             Context.SaveChanges();
-
         }
     }
 }
