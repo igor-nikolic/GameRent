@@ -14,6 +14,7 @@ Implementirano:
 - [x] Dodavanje proizvodjaca igrice (API)
 - [x] Dodavanje igrice (API)
 - [x] Rentiranje igrice (API)
+- [x] Vracanje igrice (API)
 
 Dizajn baze podataka
 --------------------
