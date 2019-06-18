@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Commands;
 using Application.DataTransfer;
+using Application.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using DataAccess;
 namespace API.Controllers
@@ -43,9 +44,21 @@ namespace API.Controllers
                 _addGame.Execute(dto);
                 return StatusCode(201);
             }
+            catch (GameExistsException)
+            {
+                return StatusCode(409, "Game already exists");
+            }
+            catch (CompanyDoesntExistException)
+            {
+                return StatusCode(404, "Company doesn't exist");
+            }
+            catch (CategoryDoesntExistException)
+            {
+                return StatusCode(404, "Category doesn's exist");
+            }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(500, "Server error, try again later");
             }
         }
 

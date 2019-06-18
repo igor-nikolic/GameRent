@@ -18,7 +18,8 @@ namespace DataAccess
         public DbSet<User> Users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-FJ93TN6\SQLEXPRESS;Initial Catalog=RentGame;Integrated Security=True");
+            //optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-FJ93TN6\SQLEXPRESS;Initial Catalog=RentGame;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-FJ93TN6\SQLEXPRESS;Initial Catalog=GameRent;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

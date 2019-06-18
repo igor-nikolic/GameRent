@@ -1,4 +1,4 @@
-**RentGame**
+**GameRent**
 ========
 This is a project for School subject made in **ASP .NET Core Framework**  
 
@@ -15,6 +15,7 @@ Implementirano:
 - [x] Dodavanje igrice (API)
 - [x] Rentiranje igrice (API)
 - [x] Vracanje igrice (API)
+- [x] Swagger specifikacija
 
 Dizajn baze podataka
 --------------------

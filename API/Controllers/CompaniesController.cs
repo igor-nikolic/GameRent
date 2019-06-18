@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Commands;
 using Application.DataTransfer;
+using Application.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using DataAccess;
 namespace API.Controllers
@@ -44,11 +45,15 @@ namespace API.Controllers
                 _addCompany.Execute(dto);
                 return StatusCode(201);
             }
+            catch (CompanyExistsException)
+            {
+                return StatusCode(409, "Company already exists");
+            }
             catch (Exception)
             {
-                return StatusCode(500);
+                return StatusCode(500,"Server error! Try again later");
             }
-            
+
         }
 
         // PUT api/values/5

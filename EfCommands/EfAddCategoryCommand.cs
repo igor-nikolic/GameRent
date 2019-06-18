@@ -4,6 +4,7 @@ using Application.DataTransfer;
 using DataAccess;
 using Application.Exceptions;
 using Domain;
+using System;
 
 namespace EfCommands
 {
@@ -17,7 +18,7 @@ namespace EfCommands
             if (Context.Categories.Any(c => c.Name == req.Name)) throw new CategoryExistsException();
             
             Context.Categories.Add(new Category
-            {
+            {  
                 Name = req.Name
             });
             Context.SaveChanges();
