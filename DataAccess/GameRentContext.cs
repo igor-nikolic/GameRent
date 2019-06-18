@@ -32,27 +32,26 @@ namespace DataAccess
             
             //Company seeding
             modelBuilder.Entity<Company>().HasData(
-                new Company{Id = 1,Name = "Ubisoft"}, // 1
-                new Company{Id = 2,Name = "Electronic Arts"}, // 2
-                new Company{Id = 3,Name = "Nintendo"}, // 3
-                new Company{Id = 4,Name = "Sony"}, // 4
-                new Company{Id = 5,Name = "Rockstar Games"} // 5
+                new Company{Id = 1,Name = "Ubisoft"}, 
+                new Company{Id = 2,Name = "Electronic Arts"}, 
+                new Company{Id = 3,Name = "Nintendo"}, 
+                new Company{Id = 4,Name = "Sony"}, 
+                new Company{Id = 5,Name = "Rockstar Games"} 
                 );
             // Categories seeding
             modelBuilder.Entity<Category>().HasData(
-                new Category{Id = 1,Name = "Massively Multiplayer Online"}, // 1
-                new Category{Id = 2,Name = "Simulations"}, // 2
-                new Category{Id = 3,Name = "Adventure"}, // 3
-                new Category{Id = 4,Name = "Real-Time Strategy"}, // 4
-                new Category{Id = 5,Name = "Puzzle"}, // 5
-                new Category{Id = 6,Name = "Action"}, // 6
-                new Category{Id = 7,Name = "Stealth Shooter"}, // 7
-                new Category{Id = 8,Name = "Combat"}, // 8
-                new Category{Id = 9,Name = "First Person Shooters"}, // 9
-                new Category{Id = 10,Name = "Sports"}, // 10
-                new Category{Id = 11,Name = "Role-Playing"}, // 11
-                new Category{Id = 12,Name = "Educational"} // 12
-                
+                new Category{Id = 1,Name = "Massively Multiplayer Online"}, 
+                new Category{Id = 2,Name = "Simulations"}, 
+                new Category{Id = 3,Name = "Adventure"}, 
+                new Category{Id = 4,Name = "Real-Time Strategy"}, 
+                new Category{Id = 5,Name = "Puzzle"}, 
+                new Category{Id = 6,Name = "Action"}, 
+                new Category{Id = 7,Name = "Stealth Shooter"}, 
+                new Category{Id = 8,Name = "Combat"}, 
+                new Category{Id = 9,Name = "First Person Shooters"}, 
+                new Category{Id = 10,Name = "Sports"}, 
+                new Category{Id = 11,Name = "Role-Playing"}, 
+                new Category{Id = 12,Name = "Educational"} 
                 );
             //Roles seeding
             modelBuilder.Entity<Role>().HasData(

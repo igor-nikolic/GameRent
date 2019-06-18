@@ -43,7 +43,7 @@ namespace API.Controllers
                 _addGame.Execute(dto);
                 return StatusCode(201);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500);
             }

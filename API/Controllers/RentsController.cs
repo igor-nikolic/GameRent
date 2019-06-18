@@ -15,10 +15,12 @@ namespace API.Controllers
     {
 
         private readonly IRentGameCommand _rentGame;
+        private readonly IReturnGameCommand _returnGame;
 
-        public RentsController(IRentGameCommand rentGame)
+        public RentsController(IRentGameCommand rentGame, IReturnGameCommand returnGame)
         {
             _rentGame = rentGame;
+            _returnGame = returnGame;
         }
 
         // GET api/values
@@ -44,19 +46,27 @@ namespace API.Controllers
                 _rentGame.Execute(dto);
                 return StatusCode(201, "Game rented!");
             }
-            catch (GameNotAvailableException e)
+            catch (GameNotAvailableException)
             {
                 return StatusCode(409, "Game not available for renting!");
             }
-            catch (UserDoesntExistException e)
+            catch (UserDoesntExistException)
             {
                 return StatusCode(404, "User with provided ID doesn't exist!");
             }
-            catch (GameDoesntExistException e)
+            catch (GameDoesntExistException)
             {
                 return StatusCode(404, "Game with provided ID doesn't exist");
             }
-            catch (Exception e)
+            catch (ActiveRentException)
+            {
+                return StatusCode(409, "You have an active rent!");
+            }
+            catch(DeletedException)
+            {
+                return StatusCode(404, "Game has been deleted!");
+            }
+            catch (Exception)
             {
                 return StatusCode(500, "Something is wrong on our server! Please try again later");
             }
@@ -64,8 +74,38 @@ namespace API.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] RentGameDto dto)
         {
+            dto.Id = id;
+            try
+            {
+                _returnGame.Execute(dto);
+                return StatusCode(201, "Game returned!");
+            }
+            catch (GameDoesntExistException)
+            {
+                return StatusCode(404, "Game doesnt exists");
+            }
+            catch (UserDoesntExistException)
+            {
+                return StatusCode(404, "User doesnt exist");
+            }
+            catch (RentNotFoundException)
+            {
+                return StatusCode(404, "Rent with that Id not found");
+            }
+            catch (BadDataException)
+            {
+                return StatusCode(422, "Wrong data provided!");
+            }
+            catch (GameReturnedException)
+            {
+                return StatusCode(409, "You have already returned this game!");
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Something is wrong on our server! Please try again later");
+            }
         }
 
         // DELETE api/values/5

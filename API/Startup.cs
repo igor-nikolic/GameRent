@@ -34,6 +34,7 @@ namespace API
             services.AddTransient<IAddCategoryCommand, EfAddCategoryCommand>();
             services.AddTransient<IAddCompanyCommand, EfAddCompanyCommand>();
             services.AddTransient<IRentGameCommand, EfRentGameCommand>();
+            services.AddTransient<IReturnGameCommand, EfReturnGameCommand>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

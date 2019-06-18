@@ -44,7 +44,7 @@ namespace API.Controllers
                 _addCompany.Execute(dto);
                 return StatusCode(201);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500);
             }
